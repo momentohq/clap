@@ -1,0 +1,12 @@
+language = "rust"
+
+# No path here: the order appends the exact test filter to this command, so a command that already
+# names a target or a package fights the scoping the probes supply.
+test_command = "cargo test"
+
+repo = "clap-rs/clap"   # this is a fork; its merged pull requests are upstream's
+
+# Rust needs NO offline_prepare declaration. The contract vendors with `cargo vendor` and tells
+# cargo to read the vendored directory with `--config` arguments on the test command, which is
+# what lets it work on a repository that already pins its own `[source.crates-io]`.
+worker_image = "rust:1-bookworm@sha256:ae1a730a949f727611a5c684e1e26e5a9bb9885b34f65a442744ca8a61c86ca5"
